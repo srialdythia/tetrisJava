@@ -23,15 +23,32 @@ public class GameArea extends JPanel{
         block = new TetrisBlock(shape);
     }
     
+    public boolean checkRight(){
+        if (block.getRightEdge() == gridColumns) return false;
+        return true;
+    }
+    
+    public boolean checkLeft(){
+        if (block.getLeftEdge() == 0) return false;
+        return true;
+    }
+    public boolean checkBottom(){
+        if (block.getBottomEdge() == gridRows) return false;
+        return true;
+    }
+    
     public void blockMoveRight(){
+        if(!checkRight()) return;
         block.moveRight();
         repaint();
     }
     public void blockMoveLeft(){
+        if(!checkLeft()) return;
         block.moveLeft();
         repaint();
     }
     public void blockMoveDown(){
+        if(!checkBottom()) return;
         block.moveDown();
         repaint();
     }

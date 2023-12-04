@@ -32,6 +32,15 @@ public class TetrisBlock {
     public int[][] getShape(){
         return shape;
     }
+    public int getBottomEdge(){
+        return y + getHeight();
+    }
+    public int getRightEdge(){
+        return x + getWidth();
+    }
+    public int getLeftEdge(){
+        return x;
+    }
     
     
 }
