@@ -5,14 +5,18 @@ import javax.swing.JPanel;
 
 public class GameForm extends javax.swing.JFrame {
 
-    private GameArea ga; // extends JPanel it means GameArea is JPanel
+    private GameArea ga; // extends JPanel it means GameArea is a JPanel
+    private GameThread gt; // extends Thread it means GameThread is a Thread
     
     public GameForm() {
         initComponents();
         ga = new GameArea(placeholder, 10);
-        
         // add custom JPanel to GameForm
         add(ga);
+        
+        // add game thread
+        gt = new GameThread(ga);
+        gt.start();
     }
 
     @SuppressWarnings("unchecked")
