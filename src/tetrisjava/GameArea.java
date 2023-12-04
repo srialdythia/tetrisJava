@@ -20,8 +20,8 @@ public class GameArea extends JPanel{
     }
     
     public void drawBackground(Graphics g){
-        for(int r=0; r<gridRows; r++){
-            for(int c=0; c<gridColumns; c++){
+        for(int r=0; r < gridRows; r++){
+            for(int c=0; c < gridColumns; c++){
                 int x = c*gridSize;
                 int y = r*gridSize;
                 g.setColor(Color.black);
@@ -32,8 +32,10 @@ public class GameArea extends JPanel{
     
     public void drawBlock(Graphics g){
         int[][] shape ={{1,0},{1,0},{1,1}};
-        for(int r=0; r<shape.length; r++){
-            for(int c=0; c<shape[0].length; c++){
+        TetrisBlock block = new TetrisBlock(shape);
+        
+        for(int r=0; r < block.getHeight(); r++){
+            for(int c=0; c < block.getWidth(); c++){
                 if(shape[r][c] == 1){
                     int x = c*gridSize;
                     int y = r*gridSize;
