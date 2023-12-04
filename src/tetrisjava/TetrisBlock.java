@@ -17,6 +17,12 @@ public class TetrisBlock {
     public void moveDown(){
         y++;
     }
+    public void moveLeft(){
+        x--;
+    }
+    public void moveRight(){
+        x++;
+    }
     public int getHeight(){
         return shape.length;
     }

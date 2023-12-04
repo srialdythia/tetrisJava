@@ -23,6 +23,14 @@ public class GameArea extends JPanel{
         block = new TetrisBlock(shape);
     }
     
+    public void blockMoveRight(){
+        block.moveRight();
+        repaint();
+    }
+    public void blockMoveLeft(){
+        block.moveLeft();
+        repaint();
+    }
     public void blockMoveDown(){
         block.moveDown();
         repaint();

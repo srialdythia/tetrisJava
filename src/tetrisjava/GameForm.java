@@ -1,7 +1,12 @@
 
 package tetrisjava;
 
+import java.awt.event.ActionEvent;
+import javax.swing.AbstractAction;
+import javax.swing.ActionMap;
+import javax.swing.InputMap;
 import javax.swing.JPanel;
+import javax.swing.KeyStroke;
 
 public class GameForm extends javax.swing.JFrame {
 
@@ -13,6 +18,7 @@ public class GameForm extends javax.swing.JFrame {
         ga = new GameArea(placeholder, 10);
         // add custom JPanel to GameForm
         add(ga);
+        initControls();
         
         // add game thread
         gt = new GameThread(ga);
@@ -71,6 +77,50 @@ public class GameForm extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+   public void initControls(){
+        // take keyStroke
+        InputMap im = getRootPane().getInputMap();
+        ActionMap am = getRootPane().getActionMap();
+        
+        im.put(KeyStroke.getKeyStroke("RIGHT"), "right");
+        am.put("right", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.blockMoveRight();
+            }
+        });
+        
+        im.put(KeyStroke.getKeyStroke("LEFT"), "left");
+        am.put("left", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.blockMoveLeft();
+            }
+        });
+        
+        im.put(KeyStroke.getKeyStroke("DOWN"), "down");
+        am.put("down", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.blockMoveDown();
+            }
+        });        
+//        im.put(KeyStroke.getKeyStroke("UP"), "up");
+//        am.put("right", new AbstractAction(){
+//            @Override
+//            public void actionPerformed(ActionEvent e) {
+//                ga.blockMoveRight();
+//            }
+//        });
+        
+        
+//        panelMaster.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("A"), "doSomething");
+        
+//        panelMaster.getActionMap().put("doSomething", anAction);
+   }
+    
+    
     public static void main(String args[]) {
 
         java.awt.EventQueue.invokeLater(new Runnable() {

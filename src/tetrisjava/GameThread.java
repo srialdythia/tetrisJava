@@ -14,7 +14,7 @@ public class GameThread extends Thread{
     public void run(){
         while(true){
             try {
-                Thread.sleep(2000);
+                Thread.sleep(800);
             } catch (InterruptedException ex) {
                 Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE, null, ex);
             }
