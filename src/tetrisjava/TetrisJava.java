@@ -18,7 +18,7 @@ public class TetrisJava {
         mf.setVisible(true);
     }
     public static void gameOver(int score){
-        System.out.println("GAME OVER");
+        gf.setVisible(false);
         String playerName = JOptionPane.showInputDialog("input your name: ");
         
         if(playerName == null) {showMainMenu();}
