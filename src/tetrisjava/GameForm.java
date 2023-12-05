@@ -22,6 +22,14 @@ public class GameForm extends javax.swing.JFrame {
     }
     
     public void startGame(){
+        // initValue
+        scoreValue.setText(String.valueOf(0));
+        levelValue.setText(String.valueOf(0));
+        lineValue.setText(String.valueOf(0));
+
+        
+        // initBackground
+        ga.initBackground();
         // add game thread
         gt = new GameThread(ga,this);
         gt.start();
@@ -70,6 +78,7 @@ public class GameForm extends javax.swing.JFrame {
         lineValue.setText("0");
 
         mainMenuBtn.setText("MainMenu");
+        mainMenuBtn.setFocusable(false);
         mainMenuBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 mainMenuBtnActionPerformed(evt);
@@ -131,7 +140,9 @@ public class GameForm extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void mainMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuBtnActionPerformed
-
+        gt.interrupt();
+        setVisible(false);
+        TetrisJava.showMainMenu();
     }//GEN-LAST:event_mainMenuBtnActionPerformed
 
     

@@ -7,6 +7,9 @@ public class TetrisJava {
     public static void startGame(){
         gf.startGame();
     }
+    public static void showMainMenu(){
+        mf.setVisible(true);
+    }
     
     public static void main(String[] args) {
         System.out.println("START GAME");

@@ -24,7 +24,9 @@ public class GameArea extends JPanel{
         gridColumns = columns;
         gridSize = getBounds().width/gridColumns;
         gridRows = getBounds().height/gridSize;
-        
+    }
+    
+    public void initBackground(){
         background = new Color[gridRows][gridColumns];
     }
     
@@ -166,9 +168,7 @@ public class GameArea extends JPanel{
         
         block.rotate();
         if(block.getBottomEdge() > gridRows){
-            while(block.getBottomEdge() - gridRows !=0){
-                block.setRotation(currRotate);
-            }
+            block.setRotation(currRotate);
         }
         if (block.getRightEdge() > gridColumns){
             // moveLeft until block.getRightEdge - gridRows == 0
@@ -177,9 +177,10 @@ public class GameArea extends JPanel{
             }
         }
         if (isBlockingBackground()){ // if block blocking background
-             // rotate back
+            // rotate back
             block.setRotation(currRotate);
-        }        
+        }
+       
         repaint();
     }
     public void blockMoveRight(){

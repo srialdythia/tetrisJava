@@ -23,7 +23,7 @@ public class GameThread extends Thread{
                 try {
                     Thread.sleep(800);
                 } catch (InterruptedException ex) {
-                    Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE, null, ex);
+                    return;
                 }
             }
             ga.block2Background();
@@ -41,8 +41,6 @@ public class GameThread extends Thread{
 
             // level
             int lvl = Math.floorDiv(lineVal, linePerLvl);
-            System.out.println("lvl " + lvl);
-            System.out.println("levelVal " + levelVal);
             if(lvl > levelVal){
                 levelVal = lvl;
                 gf.setLevelVal(levelVal);

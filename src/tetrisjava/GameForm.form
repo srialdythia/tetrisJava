@@ -143,6 +143,7 @@
     <Component class="javax.swing.JButton" name="mainMenuBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="MainMenu"/>
+        <Property name="focusable" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainMenuBtnActionPerformed"/>
