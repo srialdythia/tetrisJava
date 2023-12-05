@@ -3,7 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisjava/GameArea.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisjava/TetrisBlock.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisBlock/LShape.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisBlock/OShape.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisjava/GameForm.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisBlock/TShape.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisBlock/IShape.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisBlock/ZShape.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisBlock/SShape.java</file>
             <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisjava/TetrisJava.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisjava/GameThread.java</file>
+            <file>file:/C:/Users/Aldythia/Documents/NetBeansProjects/TetrisJava/src/tetrisBlock/JShape.java</file>
         </group>
     </open-files>
 </project-private>

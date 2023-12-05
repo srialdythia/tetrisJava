@@ -15,14 +15,18 @@ public class TetrisBlock {
     }
     
     public void spawn(int columns){
+
         Random r = new Random();
+        currentRotation = r.nextInt(4);
+        shape = shapes[currentRotation];
         x = r.nextInt(columns - getWidth());
         y -= getHeight(); 
     }
     
     public void initShapes(){
         shapes = new int[4][][];
-        for(int i = 0; i < 4; i++){ //three times rotation
+        shapes[0] = shape;
+        for(int i = 1; i < 4; i++){ //three times rotation
             int r = shape[0].length;
             int c = shape.length;
             shapes[i] = new int [r][c];
@@ -47,7 +51,6 @@ public class TetrisBlock {
         }
         shape = shapes[currentRotation];
     }
-
     public int getHeight(){return shape.length;}
     public int getWidth(){return shape[0].length;}
     public int[][] getShape(){return shape;}
