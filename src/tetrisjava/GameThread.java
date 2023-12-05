@@ -47,7 +47,6 @@ public class GameThread extends Thread{
             }
         }
         // gameOver
-        if(ga.isGameOver()){
-            TetrisJava.gameOver();        }
+        if(ga.isGameOver()){TetrisJava.gameOver(scoreVal);}
     }
 }

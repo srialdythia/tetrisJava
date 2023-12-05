@@ -4,10 +4,20 @@
  */
 package tetrisjava;
 
-public class leaderboard extends javax.swing.JFrame {
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import javax.swing.table.DefaultTableModel;
 
-    public leaderboard() {
+public class Leaderboard extends javax.swing.JFrame {
+
+    private DefaultTableModel model;
+    private String fileName = "leaderboard.txt";
+    
+    public Leaderboard() {
         initComponents();
+        model = (DefaultTableModel) lbTable.getModel();
     }
 
     @SuppressWarnings("unchecked")
@@ -78,11 +88,27 @@ public class leaderboard extends javax.swing.JFrame {
         TetrisJava.showMainMenu();
     }//GEN-LAST:event_mainMenuBtnActionPerformed
 
+    private void writeData2Txt(){
+        try{
+            FileWriter file = new FileWriter(fileName);
+            BufferedWriter writer = new BufferedWriter(file);
+            
+            writer.write("Hello World");
+            
+        } catch (IOException except)
+        {
+            except.printStackTrace();
+        }
+    }
+    public void addRowLeaderboard(String name, int score){
+        model.addRow(new Object [] {name, score});
+        writeData2Txt();
+    }
 
     public static void main(String args[]) {
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new leaderboard().setVisible(true);
+                new Leaderboard().setVisible(true);
             }
         });
     }
