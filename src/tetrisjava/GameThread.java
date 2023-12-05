@@ -21,8 +21,7 @@ public class GameThread extends Thread{
                     Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-            
-            
+            ga.block2Background();
         }
     }
 }

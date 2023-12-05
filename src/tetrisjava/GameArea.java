@@ -12,6 +12,7 @@ public class GameArea extends JPanel{
     private int gridColumns,gridRows,gridSize;
     private TetrisBlock block;
     private TetrisBlock [] blocks = {new IShape(),new JShape(),new LShape(),new OShape(),new SShape(),new TShape(),new ZShape()};
+    private Color [][] background;
     
     public GameArea(JPanel placeholder, int columns){
         placeholder.setVisible(false);
@@ -23,7 +24,7 @@ public class GameArea extends JPanel{
         gridSize = getBounds().width/gridColumns;
         gridRows = getBounds().height/gridSize;
         
-
+        background = new Color[gridRows][gridColumns];
     }
     
     public void spawnBlock(){
@@ -32,12 +33,10 @@ public class GameArea extends JPanel{
         block = new TetrisBlock(blocks[index].getShape());
         block.spawn(gridColumns);
     }
-    
     public boolean checkRight(){
         if (block.getRightEdge() == gridColumns) return false;
         return true;
     }
-    
     public boolean checkLeft(){
         if (block.getLeftEdge() == 0) return false;
         return true;
@@ -67,13 +66,37 @@ public class GameArea extends JPanel{
         return true;
     }
     
+    public void block2Background(){
+        int [][] shape = block.getShape();
+        int height= block.getHeight();
+        int width = block.getWidth();
+        int xPos = block.getX();
+        int yPos = block.getY();
+        Color color = block.getColor();
+        
+        for(int r=0; r<height; r++){
+            for(int c=0; c<width; c++){
+                int x = xPos + c;
+                int y = yPos + r;
+                if(shape[r][c] == 1){
+                    background[y][x] = color;
+                }
+            }
+        }
+    }
+    
     public void drawBackground(Graphics g){
         for(int r=0; r < gridRows; r++){
             for(int c=0; c < gridColumns; c++){
-                int x = c*gridSize;
-                int y = r*gridSize;
-                g.setColor(Color.black);
-                g.drawRect(x,y, gridSize, gridSize);
+                Color color = background[r][c];
+                if (color != null){
+                    int x = c*gridSize;
+                    int y = r*gridSize;
+                    g.setColor(color);
+                    g.fillRect(x,y, gridSize, gridSize);
+                    g.setColor(Color.black);
+                    g.drawRect(x, y, gridSize, gridSize);
+                }
             }
         }
     }
@@ -88,8 +111,10 @@ public class GameArea extends JPanel{
                 if(shape[r][c] == 1){
                     int x = (c + xPos) *gridSize; // grid size
                     int y = (r + yPos) * gridSize; // grid size
-                    g.setColor(Color.blue);
+                    g.setColor(block.getColor());
                     g.fillRect(x, y, gridSize, gridSize);
+                    g.setColor(Color.black);
+                    g.drawRect(x, y, gridSize, gridSize);
                 }
             }
         }
@@ -98,8 +123,8 @@ public class GameArea extends JPanel{
     @Override
     public void paintComponent(Graphics g){
         super.paintComponent(g);
-        drawBlock(g);
         drawBackground(g);
+        drawBlock(g);
     }
     
 }
