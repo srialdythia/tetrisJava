@@ -185,6 +185,10 @@ public class GameArea extends JPanel{
         repaint();
         return true;
     }
+    public boolean isGameOver(){
+        if(block.getY() < 0) return true;
+        return false;
+    }
     public void block2Background(){
         int [][] shape = block.getShape();
         int height= block.getHeight();
@@ -197,6 +201,7 @@ public class GameArea extends JPanel{
             for(int c=0; c<width; c++){
                 int x = xPos + c;
                 int y = yPos + r;
+                if (y<0) break;
                 if(shape[r][c] == 1){
                     background[y][x] = color;
                 }

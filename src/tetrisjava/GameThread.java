@@ -22,7 +22,13 @@ public class GameThread extends Thread{
                 }
             }
             ga.block2Background();
+            if(ga.isGameOver()){break;}
             ga.clearLine();
+        }
+        // gameOver
+        if(ga.isGameOver()){
+            System.out.println("GAME OVER");
+//            Tetris.saveScore();
         }
     }
 }
