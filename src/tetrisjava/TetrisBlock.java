@@ -44,9 +44,15 @@ public class TetrisBlock {
     public Color getColor(){return color;}
     public int getX(){return x;}
     public int getY(){return y;}
+    public void moveUp(){y--;}
     public void moveDown(){y++;}
     public void moveLeft(){x--;}
     public void moveRight(){x++;}
+    public void setRotation(int rotation){
+        currentRotation = rotation;
+        shape = shapes[currentRotation];
+    }
+    public int getRotation(){return currentRotation;}
     public void rotate(){
         currentRotation++;
         if(currentRotation > 3){

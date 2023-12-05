@@ -30,7 +30,7 @@ public class GameArea extends JPanel{
     public void spawnBlock(){
         Random r = new Random();
         int index = r.nextInt(blocks.length);
-        block = new TetrisBlock(blocks[index].getShape());
+        block = new TetrisBlock(blocks[0].getShape());
         block.spawn(gridColumns);
     }
     public boolean checkRight(){
@@ -99,8 +99,46 @@ public class GameArea extends JPanel{
         }
         return true;
     }
+    public boolean isBlockingBackground(){
+        int [][] shape = block.getShape();
+        int height = block.getHeight();
+        int width = block.getWidth();
+        int posY = block.getY();
+        int posX = block.getX();
+        
+        // loop from bottom to up, right to left
+        for(int r=height-1; r>-1; r--){
+            for (int c = 0; c < width; c++){
+                if (shape[r][c] == 1){
+                    int x = c + posX;
+                    int y = r + posY;
+                    if(y<0) return true;
+                    if(background[y][x] != null) {
+                        return true;
+                    }
+                }
+            }
+        }        
+        return false;
+    }
     public void blockRotate(){
+        int currRotate = block.getRotation();
         block.rotate();
+        if(block.getBottomEdge() > gridRows){
+            while(block.getBottomEdge() - gridRows !=0){
+                block.moveUp();
+            }
+        }
+        if (block.getRightEdge() > gridColumns){
+            // moveLeft until block.getRightEdge - gridRows == 0
+            while(block.getRightEdge() - gridColumns != 0){
+                block.moveLeft();
+            }
+        }
+        if (isBlockingBackground()){ // if block blocking background
+             // rotate back
+            block.setRotation(currRotate);
+        }        
         repaint();
     }
     public void blockMoveRight(){
