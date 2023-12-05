@@ -13,12 +13,16 @@ public class GameThread extends Thread{
     @Override
     public void run(){
         while(true){
-            try {
-                Thread.sleep(800);
-            } catch (InterruptedException ex) {
-                Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE, null, ex);
+            ga.spawnBlock();
+            while(ga.blockMoveDown()){
+                try {
+                    Thread.sleep(800);
+                } catch (InterruptedException ex) {
+                    Logger.getLogger(GameThread.class.getName()).log(Level.SEVERE, null, ex);
+                }
             }
-            ga.blockMoveDown();
+            
+            
         }
     }
 }

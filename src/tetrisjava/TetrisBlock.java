@@ -1,5 +1,7 @@
 package tetrisjava;
 
+import java.util.Random;
+
 public class TetrisBlock {
     
     private int [][][] shapes;
@@ -9,8 +11,13 @@ public class TetrisBlock {
     
     public TetrisBlock(int[][]s){
         shape = s;
-        System.out.println(s != null);
         initShapes();
+    }
+    
+    public void spawn(int columns){
+        Random r = new Random();
+        x = r.nextInt(columns - getWidth());
+        y -= getHeight(); 
     }
     
     public void initShapes(){

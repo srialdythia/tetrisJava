@@ -19,8 +19,13 @@ public class GameArea extends JPanel{
         gridSize = getBounds().width/gridColumns;
         gridRows = getBounds().height/gridSize;
         
+
+    }
+    
+    public void spawnBlock(){
         int[][] shape ={{1,0},{1,0},{1,1}};
         block = new TetrisBlock(shape);
+        block.spawn(gridColumns);
     }
     
     public boolean checkRight(){
@@ -50,10 +55,11 @@ public class GameArea extends JPanel{
         block.moveLeft();
         repaint();
     }
-    public void blockMoveDown(){
-        if(!checkBottom()) return;
+    public boolean blockMoveDown(){
+        if(!checkBottom()) return false;
         block.moveDown();
         repaint();
+        return true;
     }
     
     public void drawBackground(Graphics g){
