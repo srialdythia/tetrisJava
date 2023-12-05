@@ -15,6 +15,7 @@ public class TetrisJava {
     public static void gameOver(){
         System.out.println("GAME OVER");
         String playerName = JOptionPane.showInputDialog("input your name: ");
+//        if(playerName == null) {showMainMenu();}
     }
     
     public static void main(String[] args) {
