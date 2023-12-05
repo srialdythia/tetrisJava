@@ -22,6 +22,7 @@ public class GameThread extends Thread{
                 }
             }
             ga.block2Background();
+            ga.clearLine();
         }
     }
 }

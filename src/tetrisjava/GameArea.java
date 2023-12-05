@@ -33,6 +33,34 @@ public class GameArea extends JPanel{
         block = new TetrisBlock(blocks[0].getShape());
         block.spawn(gridColumns);
     }
+    public void pullDownBackground(int currRow){
+        for (int row = currRow; row > -1; row--){
+            for(int col = 0; col < gridColumns; col++){
+                if(row == 0) break;
+                System.out.println(row + " " + col);
+                Color topCol = background[row-1][col];
+                background[row][col] = topCol;
+            }
+        }
+    }
+    public int clearLine(){
+        int clearLine = 0;
+        // bottom to top, left to right;
+        for (int row = gridRows-1; row > -1; row--){
+            for(int col = 0; col < gridColumns; col++){
+//                System.out.println(row + " " + col);
+                if (background[row][col] == null) break;// if there is rect with no color in line, break
+                if (col == gridColumns - 1){ // this line should be clear
+                    // pulldown background
+                    pullDownBackground(row);
+                    // after pulldown, check for current row in the next iter 
+                    row += 1;
+                }
+            }
+        }
+        repaint();
+        return clearLine;
+    }
     public boolean checkRight(){
         if (block.getRightEdge() == gridColumns) return false;
         
@@ -112,7 +140,7 @@ public class GameArea extends JPanel{
                 if (shape[r][c] == 1){
                     int x = c + posX;
                     int y = r + posY;
-                    if(y<0) return true;
+                    if(y<0) break;
                     if(background[y][x] != null) {
                         return true;
                     }
