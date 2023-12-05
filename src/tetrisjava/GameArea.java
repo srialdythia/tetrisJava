@@ -35,14 +35,68 @@ public class GameArea extends JPanel{
     }
     public boolean checkRight(){
         if (block.getRightEdge() == gridColumns) return false;
+        
+        int [][] shape = block.getShape();
+        int height = block.getHeight();
+        int width = block.getWidth();
+        int posY = block.getY();
+        int posX = block.getX();
+        
+        // loop from bottom to up, left to right
+        for(int r = height-1; r > -1; r--){
+            for (int c = width-1; c > -1; c--){
+                if (shape[r][c] == 1){
+                    int x = c + posX;
+                    int y = r + posY;
+                    if(y<0) return true;
+                    if(background[y][x+1] != null) return false;
+                }
+            }
+        }
         return true;
     }
     public boolean checkLeft(){
         if (block.getLeftEdge() == 0) return false;
+        
+        int [][] shape = block.getShape();
+        int height = block.getHeight();
+        int width = block.getWidth();
+        int posY = block.getY();
+        int posX = block.getX();
+        
+        // loop from bottom to up, right to left
+        for(int r=height-1; r>-1; r--){
+            for (int c = 0; c < width; c++){
+                if (shape[r][c] == 1){
+                    int x = c + posX;
+                    int y = r + posY;
+                    if(y<0) return true;
+                    if(background[y][x-1] != null) return false;
+                }
+            }
+        }
         return true;
     }
     public boolean checkBottom(){
         if (block.getBottomEdge() == gridRows) return false;
+
+        int [][] shape = block.getShape();
+        int height = block.getHeight();
+        int width = block.getWidth();
+        int posY = block.getY();
+        int posX = block.getX();
+        
+        // loop from bottom to up, right to left
+        for(int r=height-1; r>-1; r--){
+            for (int c = 0; c < width; c++){
+                if (shape[r][c] == 1){
+                    int x = c + posX;
+                    int y = r + posY;
+                    if(y<0) return true;
+                    if(background[y+1][x] != null) return false;
+                }
+            }
+        }
         return true;
     }
     public void blockRotate(){
@@ -65,7 +119,6 @@ public class GameArea extends JPanel{
         repaint();
         return true;
     }
-    
     public void block2Background(){
         int [][] shape = block.getShape();
         int height= block.getHeight();
@@ -84,7 +137,6 @@ public class GameArea extends JPanel{
             }
         }
     }
-    
     public void drawBackground(Graphics g){
         for(int r=0; r < gridRows; r++){
             for(int c=0; c < gridColumns; c++){
@@ -100,7 +152,6 @@ public class GameArea extends JPanel{
             }
         }
     }
-    
     public void drawBlock(Graphics g){
         int [][] shape = block.getShape();
         int xPos = block.getX(); // grid point
