@@ -11,9 +11,15 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.RowSorter;
+import javax.swing.SortOrder;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 public class Leaderboard extends javax.swing.JFrame {
 
@@ -83,6 +89,7 @@ public class Leaderboard extends javax.swing.JFrame {
         );
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void mainMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuBtnActionPerformed
@@ -93,8 +100,19 @@ public class Leaderboard extends javax.swing.JFrame {
 
     public void initTable(){
         model = (DefaultTableModel) lbTable.getModel();
+        sortLeaderboard();
         readData2Txt();
     }
+    
+    private void sortLeaderboard(){
+        TableRowSorter<TableModel> sorter = new TableRowSorter<TableModel>(lbTable.getModel());
+        lbTable.setRowSorter(sorter);
+
+        List<RowSorter.SortKey>sortKeys = new ArrayList<RowSorter.SortKey>();
+        sortKeys.add(new RowSorter.SortKey(1, SortOrder.DESCENDING));
+        sorter.setSortKeys(sortKeys);
+    }
+    
     private void readData2Txt(){
         model.setRowCount(0);
         FileReader file;
@@ -105,7 +123,7 @@ public class Leaderboard extends javax.swing.JFrame {
             String line = "";
             while((line = reader.readLine()) != null){
                 String name = line.split(",")[0];
-                String score = line.split(",")[1];
+                int score = Integer.valueOf(line.split(",")[1]);
                 model.addRow(new Object [] {name,score});
             }
             reader.close();
