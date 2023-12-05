@@ -1,5 +1,7 @@
 package tetrisjava;
 
+import javax.swing.JOptionPane;
+
 public class TetrisJava {
     private static GameForm gf;
     private static MainForm mf;
@@ -12,6 +14,7 @@ public class TetrisJava {
     }
     public static void gameOver(){
         System.out.println("GAME OVER");
+        String playerName = JOptionPane.showInputDialog("input your name: ");
     }
     
     public static void main(String[] args) {

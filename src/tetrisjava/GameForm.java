@@ -181,11 +181,6 @@ public class GameForm extends javax.swing.JFrame {
                 ga.blockRotate();
             }
         });
-        
-        
-//        panelMaster.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("A"), "doSomething");
-        
-//        panelMaster.getActionMap().put("doSomething", anAction);
    }
    
    public void setScoreVal(int score){
