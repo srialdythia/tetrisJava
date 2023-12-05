@@ -11,6 +11,7 @@ public class TetrisJava {
         gf.startGame();
     }
     public static void showLeaderboard(){
+        lb.initTable();
         lb.setVisible(true);
     }
     public static void showMainMenu(){

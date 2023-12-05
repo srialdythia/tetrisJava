@@ -4,10 +4,15 @@
  */
 package tetrisjava;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.table.DefaultTableModel;
 
 public class Leaderboard extends javax.swing.JFrame {
@@ -17,7 +22,6 @@ public class Leaderboard extends javax.swing.JFrame {
     
     public Leaderboard() {
         initComponents();
-        model = (DefaultTableModel) lbTable.getModel();
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -87,12 +91,36 @@ public class Leaderboard extends javax.swing.JFrame {
         TetrisJava.showMainMenu();
     }//GEN-LAST:event_mainMenuBtnActionPerformed
 
+    public void initTable(){
+        model = (DefaultTableModel) lbTable.getModel();
+        readData2Txt();
+    }
+    private void readData2Txt(){
+        model.setRowCount(0);
+        FileReader file;
+        try{
+            file = new FileReader(fileName);
+            BufferedReader reader = new BufferedReader(file);
+            
+            String line = "";
+            while((line = reader.readLine()) != null){
+                String name = line.split(",")[0];
+                String score = line.split(",")[1];
+                model.addRow(new Object [] {name,score});
+            }
+            reader.close();
+            file.close();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Leaderboard.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+            Logger.getLogger(Leaderboard.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
     private void writeData2Txt(){
         FileWriter file;
         try{
             file = new FileWriter(fileName);
             BufferedWriter writer = new BufferedWriter(file);
-            
             
             for(int row = 0; row < lbTable.getRowCount(); row++){
                 String s = "";
@@ -104,6 +132,7 @@ public class Leaderboard extends javax.swing.JFrame {
                 writer.write(s);
             }
             writer.close();
+            file.close();
         } catch (IOException except){
             except.printStackTrace();
         }

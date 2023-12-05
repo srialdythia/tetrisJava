@@ -25,6 +25,11 @@ public class MainForm extends javax.swing.JFrame {
         });
 
         lbBtn.setText("Leaderboard");
+        lbBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                lbBtnActionPerformed(evt);
+            }
+        });
 
         quitBtn.setText("Quit");
 
@@ -60,6 +65,12 @@ public class MainForm extends javax.swing.JFrame {
         setVisible(false);
         TetrisJava.startGame();
     }//GEN-LAST:event_startBtnActionPerformed
+
+    private void lbBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_lbBtnActionPerformed
+        // TODO add your handling code here:
+        setVisible(false);
+        TetrisJava.showLeaderboard();
+    }//GEN-LAST:event_lbBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
