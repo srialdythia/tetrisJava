@@ -24,25 +24,63 @@
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" alignment="0" attributes="0">
-              <EmptySpace pref="95" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
+              <Component id="mainMenuBtn" min="-2" pref="102" max="-2" attributes="0"/>
+              <EmptySpace pref="40" max="32767" attributes="0"/>
               <Component id="placeholder" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-              <Component id="scoreLabel" min="-2" pref="37" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+              <EmptySpace min="44" pref="25" max="32767" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="scoreLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="scoreValue" min="-2" pref="67" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="levelLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="levelValue" min="-2" pref="67" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Component id="lineLabel" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="lineValue" min="-2" pref="67" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
           <Group type="102" attributes="0">
-              <EmptySpace min="-2" pref="84" max="-2" attributes="0"/>
-              <Component id="scoreLabel" min="-2" max="-2" attributes="0"/>
-              <EmptySpace max="32767" attributes="0"/>
-          </Group>
-          <Group type="102" alignment="1" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+                      <Component id="placeholder" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="39" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="scoreValue" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="scoreLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="levelValue" min="-2" max="-2" attributes="0"/>
+                          <Component id="levelLabel" alignment="1" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="lineValue" min="-2" max="-2" attributes="0"/>
+                          <Component id="lineLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                      <Component id="mainMenuBtn" min="-2" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
               <EmptySpace pref="14" max="32767" attributes="0"/>
-              <Component id="placeholder" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -75,8 +113,41 @@
     </Container>
     <Component class="javax.swing.JLabel" name="scoreLabel">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Score"/>
+        <Property name="text" type="java.lang.String" value="Score:"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="levelLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Level:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lineLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Line:"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="scoreValue">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="levelValue">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lineValue">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="0"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="mainMenuBtn">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="MainMenu"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="mainMenuBtnActionPerformed"/>
+      </Events>
     </Component>
   </SubComponents>
 </Form>

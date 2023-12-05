@@ -37,11 +37,17 @@ public class GameArea extends JPanel{
         for (int row = currRow; row > -1; row--){
             for(int col = 0; col < gridColumns; col++){
                 if(row == 0) break;
-                System.out.println(row + " " + col);
                 Color topCol = background[row-1][col];
                 background[row][col] = topCol;
             }
         }
+    }
+    public int countPoints(int clearLine, int level){
+        if (clearLine == 1) return 40*(level+1);
+        if (clearLine == 2) return 100 * (level+1);
+        if (clearLine == 3) return 300 * (level+1);
+        if (clearLine >= 4) return 1200 * (level+1);
+        return 0;
     }
     public int clearLine(){
         int clearLine = 0;
@@ -53,6 +59,8 @@ public class GameArea extends JPanel{
                 if (col == gridColumns - 1){ // this line should be clear
                     // pulldown background
                     pullDownBackground(row);
+                    // increase clearline
+                    clearLine++;
                     // after pulldown, check for current row in the next iter 
                     row += 1;
                 }

@@ -5,9 +5,14 @@ import java.util.logging.Logger;
 
 public class GameThread extends Thread{
     private GameArea ga;
+    private GameForm gf;
     
-    public GameThread(GameArea gameArea){
+    private int lineVal,scoreVal,levelVal;
+    private int linePerLvl = 5;
+    
+    public GameThread(GameArea gameArea, GameForm gameForm){
         ga = gameArea;
+        gf = gameForm;
     }
     
     @Override
@@ -23,7 +28,25 @@ public class GameThread extends Thread{
             }
             ga.block2Background();
             if(ga.isGameOver()){break;}
-            ga.clearLine();
+            
+            
+            // clear line
+            int line = ga.clearLine();
+            lineVal += line;
+            gf.setLineVal(lineVal);
+            
+            // score
+            scoreVal += ga.countPoints(line, levelVal);
+            gf.setScoreVal(scoreVal);
+
+            // level
+            int lvl = Math.floorDiv(lineVal, linePerLvl);
+            System.out.println("lvl " + lvl);
+            System.out.println("levelVal " + levelVal);
+            if(lvl > levelVal){
+                levelVal = lvl;
+                gf.setLevelVal(levelVal);
+            }
         }
         // gameOver
         if(ga.isGameOver()){
