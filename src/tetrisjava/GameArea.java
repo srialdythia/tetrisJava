@@ -2,12 +2,16 @@ package tetrisjava;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Random;
 import javax.swing.JPanel;
+import tetrisBlock.*;
+
 
 public class GameArea extends JPanel{
     
     private int gridColumns,gridRows,gridSize;
     private TetrisBlock block;
+    private TetrisBlock [] blocks = {new IShape(),new JShape(),new LShape(),new OShape(),new SShape(),new TShape(),new ZShape()};
     
     public GameArea(JPanel placeholder, int columns){
         placeholder.setVisible(false);
@@ -23,8 +27,9 @@ public class GameArea extends JPanel{
     }
     
     public void spawnBlock(){
-        int[][] shape ={{1,0},{1,0},{1,1}};
-        block = new TetrisBlock(shape);
+        Random r = new Random();
+        int index = r.nextInt(blocks.length);
+        block = new TetrisBlock(blocks[index].getShape());
         block.spawn(gridColumns);
     }
     

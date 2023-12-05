@@ -19,7 +19,6 @@ public class GameForm extends javax.swing.JFrame {
         // add custom JPanel to GameForm
         add(ga);
         initControls();
-        
         // add game thread
         gt = new GameThread(ga);
         gt.start();
