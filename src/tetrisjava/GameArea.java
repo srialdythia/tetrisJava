@@ -132,7 +132,7 @@ public class GameArea extends JPanel{
                 if (shape[r][c] == 1){
                     int x = c + posX;
                     int y = r + posY;
-                    if(y<0) return true;
+                    if(y+1 < 0) return true;
                     if(background[y+1][x] != null) return false;
                 }
             }

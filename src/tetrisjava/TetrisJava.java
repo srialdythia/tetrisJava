@@ -10,6 +10,9 @@ public class TetrisJava {
     public static void showMainMenu(){
         mf.setVisible(true);
     }
+    public static void gameOver(){
+        System.out.println("GAME OVER");
+    }
     
     public static void main(String[] args) {
         System.out.println("START GAME");
