@@ -162,7 +162,7 @@ public class GameArea extends JPanel{
         block.rotate();
         if(block.getBottomEdge() > gridRows){
             while(block.getBottomEdge() - gridRows !=0){
-                block.moveUp();
+                block.setRotation(currRotate);
             }
         }
         if (block.getRightEdge() > gridColumns){
