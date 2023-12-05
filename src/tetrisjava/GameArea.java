@@ -36,7 +36,10 @@ public class GameArea extends JPanel{
         if (block.getBottomEdge() == gridRows) return false;
         return true;
     }
-    
+    public void blockRotate(){
+        block.rotate();
+        repaint();
+    }
     public void blockMoveRight(){
         if(!checkRight()) return;
         block.moveRight();

@@ -106,13 +106,13 @@ public class GameForm extends javax.swing.JFrame {
                 ga.blockMoveDown();
             }
         });        
-//        im.put(KeyStroke.getKeyStroke("UP"), "up");
-//        am.put("right", new AbstractAction(){
-//            @Override
-//            public void actionPerformed(ActionEvent e) {
-//                ga.blockMoveRight();
-//            }
-//        });
+        im.put(KeyStroke.getKeyStroke("UP"), "up");
+        am.put("up", new AbstractAction(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                ga.blockRotate();
+            }
+        });
         
         
 //        panelMaster.getInputMap(JComponent.WHEN_ANCESTOR_OF_FOCUSED_COMPONENT).put(KeyStroke.getKeyStroke("A"), "doSomething");
