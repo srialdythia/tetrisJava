@@ -13,6 +13,7 @@ public class GameArea extends JPanel{
     private TetrisBlock block;
     private TetrisBlock [] blocks = {new IShape(),new JShape(),new LShape(),new OShape(),new SShape(),new TShape(),new ZShape()};
     private Color [][] background;
+    private boolean controls;
     
     public GameArea(JPanel placeholder, int columns){
         placeholder.setVisible(false);
@@ -28,6 +29,7 @@ public class GameArea extends JPanel{
     }
     
     public void spawnBlock(){
+        controls = true;
         Random r = new Random();
         int index = r.nextInt(blocks.length);
         block = new TetrisBlock(blocks[0].getShape());
@@ -158,7 +160,10 @@ public class GameArea extends JPanel{
         return false;
     }
     public void blockRotate(){
+        if(!controls) return;
+        
         int currRotate = block.getRotation();
+        
         block.rotate();
         if(block.getBottomEdge() > gridRows){
             while(block.getBottomEdge() - gridRows !=0){
@@ -178,17 +183,22 @@ public class GameArea extends JPanel{
         repaint();
     }
     public void blockMoveRight(){
+        if(!controls) return;
         if(!checkRight()) return;
         block.moveRight();
         repaint();
     }
     public void blockMoveLeft(){
+        if(!controls) return;
         if(!checkLeft()) return;
         block.moveLeft();
         repaint();
     }
     public boolean blockMoveDown(){
-        if(!checkBottom()) return false;
+        if(!checkBottom()){ 
+            controls = false;
+            return false;
+        }
         block.moveDown();
         repaint();
         return true;
