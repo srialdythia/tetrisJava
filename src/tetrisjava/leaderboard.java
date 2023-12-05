@@ -19,7 +19,6 @@ public class Leaderboard extends javax.swing.JFrame {
         initComponents();
         model = (DefaultTableModel) lbTable.getModel();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -89,14 +88,23 @@ public class Leaderboard extends javax.swing.JFrame {
     }//GEN-LAST:event_mainMenuBtnActionPerformed
 
     private void writeData2Txt(){
+        FileWriter file;
         try{
-            FileWriter file = new FileWriter(fileName);
+            file = new FileWriter(fileName);
             BufferedWriter writer = new BufferedWriter(file);
             
-            writer.write("Hello World");
             
-        } catch (IOException except)
-        {
+            for(int row = 0; row < lbTable.getRowCount(); row++){
+                String s = "";
+                for(int col = 0; col < lbTable.getColumnCount(); col++){
+                    s += model.getValueAt(row, col);
+                    if (col==0){s+=",";}
+                    if (col==1){s+="\n";}
+                }
+                writer.write(s);
+            }
+            writer.close();
+        } catch (IOException except){
             except.printStackTrace();
         }
     }
