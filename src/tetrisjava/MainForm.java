@@ -32,6 +32,11 @@ public class MainForm extends javax.swing.JFrame {
         });
 
         quitBtn.setText("Quit");
+        quitBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                quitBtnActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -71,6 +76,11 @@ public class MainForm extends javax.swing.JFrame {
         setVisible(false);
         TetrisJava.showLeaderboard();
     }//GEN-LAST:event_lbBtnActionPerformed
+
+    private void quitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_quitBtnActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_quitBtnActionPerformed
 
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */

@@ -34,7 +34,7 @@ public class GameArea extends JPanel{
         controls = true;
         Random r = new Random();
         int index = r.nextInt(blocks.length);
-        block = new TetrisBlock(blocks[0].getShape());
+        block = new TetrisBlock(blocks[index].getShape());
         block.spawn(gridColumns);
     }
     public void pullDownBackground(int currRow){
