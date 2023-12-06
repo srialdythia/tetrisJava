@@ -2,3 +2,4 @@ gege,0
 yu,0
 gg,0
 bb,40
+gg_gaming,200

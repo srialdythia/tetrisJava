@@ -32,6 +32,7 @@ public class GameThread extends Thread{
             
             // clear line
             int line = ga.clearLine();
+            if (line > 0) TetrisJava.startClearLineSound();
             lineVal += line;
             gf.setLineVal(lineVal);
             
@@ -42,6 +43,7 @@ public class GameThread extends Thread{
             // level
             int lvl = Math.floorDiv(lineVal, linePerLvl);
             if(lvl > levelVal){
+                TetrisJava.startLevelUpSound();
                 levelVal = lvl;
                 gf.setLevelVal(levelVal);
             }

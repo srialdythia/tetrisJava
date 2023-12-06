@@ -141,6 +141,7 @@ public class GameForm extends javax.swing.JFrame {
 
     private void mainMenuBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_mainMenuBtnActionPerformed
         gt.interrupt();
+        TetrisJava.stopTetrisSound();
         setVisible(false);
         TetrisJava.showMainMenu();
     }//GEN-LAST:event_mainMenuBtnActionPerformed
